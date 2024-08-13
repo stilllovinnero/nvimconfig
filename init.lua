@@ -1,5 +1,5 @@
-require("krisekrise")
 require("krisekrise.lazy")
+require("krisekrise")
 
 
 
