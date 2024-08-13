@@ -29,3 +29,7 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
 vim.g.mapleader = " "
+
+-- netrw <3
+vim.g.netrw_liststyle = 3  -- Tree-style listing
+
