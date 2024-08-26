@@ -41,6 +41,7 @@ vim.api.nvim_set_keymap('n', '<leader>n', '<C-]>', { noremap = true, silent = tr
 
 -- Escape terminal mode via <Esc> 
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("t", "jj", "<C-\\><C-n>", {noremap = true, silent = true})
 
 function toggle_terminal()
     local term_buf = nil
