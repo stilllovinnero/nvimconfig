@@ -1,9 +1,14 @@
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-vim.keymap.set("n", "<leader>h", vim.cmd.tabprevious)
-vim.keymap.set("n", "<leader>l", vim.cmd.tabnext)
+vim.keymap.set("n", "<leader>p", vim.cmd.tabprevious)
+vim.keymap.set("n", "<leader>n", vim.cmd.tabnext)
 vim.keymap.set('n', '<leader>j', ':tabnew<CR>', { noremap = true, silent = true })
 
+-- Jump between windows with leader + direction key
+vim.api.nvim_set_keymap("n", "<leader>k", "<C-w>k", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>j", "<C-w>j", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>l", "<C-w>l", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>h", "<C-w>h", {noremap = true, silent = true})
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -18,24 +23,25 @@ vim.api.nvim_set_keymap("i", "jj", "<Esc>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>n', '<C-]>', { noremap = true, silent = true })
 
 -- Function to close the terminal window
-function close_terminal()
-  local win_id = vim.api.nvim_get_current_win()
-  local buf_id = vim.api.nvim_win_get_buf(win_id)
-
-  -- Check if the buffer type is 'terminal'
-  if vim.bo[buf_id].buftype == 'terminal' then
-    vim.api.nvim_win_close(win_id, true)
-  else
-    -- If not a terminal, do nothing or add custom behavior
-    vim.cmd('normal! \\<Esc>')
-  end
-end
+-- function close_terminal()
+--   local win_id = vim.api.nvim_get_current_win()
+--   local buf_id = vim.api.nvim_win_get_buf(win_id)
+-- 
+--   -- Check if the buffer type is 'terminal'
+--   if vim.bo[buf_id].buftype == 'terminal' then
+--     vim.api.nvim_win_close(win_id, true)
+--   else
+--     -- If not a terminal, do nothing or add custom behavior
+--     vim.cmd('normal! \\<Esc>')
+--   end
+-- end
 
 -- Set the key mapping in terminal mode
 -- vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>:lua close_terminal()<CR>', { noremap = true, silent = true })
 
 -- Escape terminal mode via <Esc> 
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("t", "jj", "<C-\\><C-n>", {noremap = true, silent = true})
 
 function toggle_terminal()
     local term_buf = nil
